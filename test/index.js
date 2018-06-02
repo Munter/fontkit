@@ -1,5 +1,6 @@
 import fontkit from '../src';
 import assert from 'assert';
+import fs from 'fs';
 
 describe('fontkit', function() {
   it('should open a font asynchronously', () =>
@@ -11,6 +12,12 @@ describe('fontkit', function() {
 
   it('should open a font synchronously', function() {
     let font = fontkit.openSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
+    return assert.equal(font.constructor.name, 'TTFFont');
+  });
+
+  it('should open a fontbuffer synchronously', function() {
+    let buffer = fs.readFileSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
+    let font = fontkit.openSync(buffer);
     return assert.equal(font.constructor.name, 'TTFFont');
   });
 

@@ -1,4 +1,5 @@
 import r from 'restructure';
+const isBuffer = require('is-buffer');
 const fs = require('fs');
 
 var fontkit = {};
@@ -11,8 +12,13 @@ fontkit.registerFormat = function(format) {
   formats.push(format);
 };
 
-fontkit.openSync = function(filename, postscriptName) {
-  let buffer = fs.readFileSync(filename);
+fontkit.openSync = function(fileNameOrBuffer, postscriptName) {
+  let buffer;
+  if (isBuffer(fileNameOrBuffer)) {
+    buffer = fileNameOrBuffer;
+  } else {
+    buffer = fs.readFileSync(fileNameOrBuffer);
+  }
   return fontkit.create(buffer, postscriptName);
 };
 

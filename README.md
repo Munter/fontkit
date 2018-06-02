@@ -50,9 +50,9 @@ subset.encodeStream()
 
 Opens a font file asynchronously, and calls the callback with a font object. For collection fonts (such as TrueType collection files), you can pass a `postscriptName` to get that font out of the collection instead of a collection object.
 
-### `fontkit.openSync(filename, postscriptName = null)`
+### `fontkit.openSync(filenameOrBuffer, postscriptName = null)`
 
-Opens a font file synchronously, and returns a font object. For collection fonts (such as TrueType collection files), you can pass a `postscriptName` to get that font out of the collection instead of a collection object.
+Opens a font file or Buffer containing a font synchronously, and returns a font object. For collection fonts (such as TrueType collection files), you can pass a `postscriptName` to get that font out of the collection instead of a collection object.
 
 ### `fontkit.create(buffer, postscriptName = null)`
 
